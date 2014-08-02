@@ -340,7 +340,8 @@ def emit_component blk
 	w, h, buf = get_lib lib
 	print %{  <g transform="translate(#{x} #{y})">\n}
 	transform_str = ""
-	case vars["DIR"].to_i & 3
+	d = vars["DIR"].to_i
+	case d & 3
 	when 0
 		transform_str = "translate(-#{w-1} -#{h-1})"
 	when 1
@@ -352,8 +353,12 @@ def emit_component blk
 	else
 		raise
 	end
-	if vars["DIR"].to_i & 4 == 4 then
-		transform_str = "matrix(-1 0 0 1 -#{w-1} 0)" + transform_str
+	if d & 4 == 4 then
+		if d & 1 == 0 then
+			transform_str = "translate(-#{w-1})scale(-1 1)" + transform_str
+		else
+			transform_str = "translate(-#{h-1})scale(-1 1)" + transform_str
+		end
 	end
 	print %{    <g transform="#{transform_str}">\n}
 
