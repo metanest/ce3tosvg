@@ -105,7 +105,7 @@ def emit_tag blk
 
 	case vars["D"]
 	when "0"
-		print %{  <g transform="translate(#{x} #{y})rotate(270)">\n}
+		print %{  <g transform="translate(#{x} #{y})rotate(90)translate(-#{w})">\n}
 	when "1"
 		print %{  <g transform="translate(#{x} #{y})">\n}
 	else
