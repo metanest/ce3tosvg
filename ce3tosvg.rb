@@ -90,7 +90,7 @@ def get_svgopen blks
 		end
 	}
 
-	return %{<svg xmlns="http://www.w3.org/2000/svg" width="#{wh[0]}" height="#{wh[1]}">\n}
+	return %{<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="#{wh[0]}" height="#{wh[1]}">\n}
 end
 
 def emit_tag blk
