@@ -114,13 +114,13 @@ def emit_tag blk
 
 	case vars["T"]
 	when "0"
-		print %{    <polygon points="0-5 0 5 #{w} 5 #{w}-5" fill="none" stroke="black"/>\n}
+		print %{    <polygon points="0 -5 0 5 #{w} 5 #{w} -5" fill="none" stroke="black"/>\n}
 	when "1"
-		print %{    <polygon points="0 0 5 5 #{w} 5 #{w}-5 5-5" fill="none" stroke="black"/>\n}
+		print %{    <polygon points="0 0 5 5 #{w} 5 #{w} -5 5 -5" fill="none" stroke="black"/>\n}
 	when "2"
-		print %{    <polygon points="0-5 0 5 #{w-5} 5 #{w} 0 #{w-5}-5" fill="none" stroke="black"/>\n}
+		print %{    <polygon points="0 -5 0 5 #{w-5} 5 #{w} 0 #{w-5} -5" fill="none" stroke="black"/>\n}
 	when "3"
-		print %{    <polygon points="0 0 5 5 #{w-5} 5 #{w} 0 #{w-5}-5 5-5" fill="none" stroke="black"/>\n}
+		print %{    <polygon points="0 0 5 5 #{w-5} 5 #{w} 0 #{w-5} -5 5 -5" fill="none" stroke="black"/>\n}
 	else
 		raise
 	end
@@ -365,12 +365,12 @@ def emit_component blk
 	print buf
 
 	print %{    </g>\n}
-	#if vars["NH"] != "1" then
-	#	n = vars["N"]
-	#	nx = vars["NX"]
-	#	ny = vars["NY"]
-	#	print %{    <text x="#{nx}" y="#{ny}" >#{n}</text>\n}
-	#end
+	if vars["NH"] != "1" then
+		n = vars["N"]
+		nx = vars["NX"]
+		ny = vars["NY"]
+		print %{    <text x="#{nx}" y="#{ny}" >#{n}</text>\n}
+	end
 	print %{  </g>\n}
 end
 
