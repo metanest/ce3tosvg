@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby20
+#!/usr/local/bin/ruby22
 # -*- mode:ruby ; coding:utf-8 -*-
 # vi:set ts=3 sw=3:
 # vim:set sts=0 noet ft=ruby:
@@ -90,7 +90,7 @@ def get_svgopen blks
 		end
 	}
 
-	return %{<svg xmlns="http://www.w3.org/2000/svg" width="#{wh[0]}" height="#{wh[1]}" version="1.1">\n}
+	return %{<svg xmlns="http://www.w3.org/2000/svg" width="#{wh[0]}" height="#{wh[1]}">\n}
 end
 
 def emit_tag blk
