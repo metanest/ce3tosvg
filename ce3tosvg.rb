@@ -365,12 +365,33 @@ def emit_component blk
 	print buf
 
 	print %{    </g>\n}
+
 	if vars["NH"] != "1" then
+		rot_str = ""
+		if vars["ND"] == "0" then
+			rot_str = "rotate(270)"
+		end
 		n = vars["N"]
 		nx = vars["NX"]
 		ny = vars["NY"]
-		print %{    <text x="#{nx}" y="#{ny}" >#{n}</text>\n}
+		print %{    <g transform="translate(#{nx} #{ny})#{rot_str}">\n}
+		print %{      <text>#{n}</text>\n}
+		print %{    </g>\n}
 	end
+
+	if vars["RH"] != "1" then
+		rot_str = ""
+		if vars["RD"] == "0" then
+			rot_str = "rotate(270)"
+		end
+		r = vars["R"]
+		rx = vars["RX"]
+		ry = vars["RY"]
+		print %{    <g transform="translate(#{rx} #{ry})#{rot_str}">\n}
+		print %{      <text>#{r}</text>\n}
+		print %{    </g>\n}
+	end
+
 	print %{  </g>\n}
 end
 
